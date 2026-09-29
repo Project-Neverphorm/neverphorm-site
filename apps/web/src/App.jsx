@@ -6,7 +6,6 @@ import ScrollToTop from './components/ScrollToTop.jsx';
 import HomePage from './pages/HomePage.jsx';
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
-import VecPulse from "@/pages/Mobile/VecPulse.jsx";
 import NotFound from "@/pages/NotFound";
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
 
-        <Route path="/mobile/vecpulse" element={<VecPulse />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
