@@ -43,6 +43,9 @@ const About = () => (
               <h3>{p.name}</h3>
               <span className="np-role">{p.role}</span>
               <p>{p.bio}</p>
+              {p.favorites?.length > 0 && (
+                <p className="np-favs"><span>Favorite games:</span> {p.favorites.join(", ")}</p>
+                )}
             </div>
           </article>
         ))}

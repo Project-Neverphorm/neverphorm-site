@@ -88,6 +88,8 @@ html, body { background: var(--np-ink); }
 .np-bio { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 24px; align-items: start; min-width: 0; }
 .np-role { display: block; font-size: 13px; color: var(--np-accent); margin-top: 4px; }
 .np-bio p { margin: 12px 0 0; color: var(--np-dim); }
+.np-favs { font-size: 14px; }
+.np-favs span { color: var(--np-bone); font-weight: 500; }
 
 /* Tenets list */
 .np-tenets { display: grid; border-top: 1px solid var(--np-line); }
