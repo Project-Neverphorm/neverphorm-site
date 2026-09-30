@@ -136,3 +136,35 @@ html, body { background: var(--np-ink); }
   .np-bio { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .np * { transition: none !important; } }
+
+/* "Too early" popup */
+.np-early { position: relative; display: inline-block; }
+.np-pop {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 0;
+  width: max-content;
+  max-width: min(300px, 80vw);
+  background: var(--np-slab);
+  border: 1px solid var(--np-accent);
+  color: var(--np-bone);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .5);
+  animation: np-pop-in .25s ease-out;
+}
+.np-pop::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 24px;
+  border: 7px solid transparent;
+  border-top-color: var(--np-accent);
+}
+@keyframes np-pop-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) { .np-pop { animation: none; } }
