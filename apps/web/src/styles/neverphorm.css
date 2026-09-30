@@ -81,7 +81,7 @@ html, body { background: var(--np-ink); }
 .np-member { display: grid; grid-template-columns: 120px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 20px; align-items: center; min-width: 0; }
 .np-member .np-photo { grid-row: 1 / span 2; }
 .np-member h3 { align-self: end; }
-.np-member span { align-self: start; font-size: 14px; color: var(--np-dim); }
+.np-member > span { align-self: start; font-size: 14px; color: var(--np-dim); }
 
 /* Team bios (about) */
 .np-crew { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px; margin-top: 40px; }
