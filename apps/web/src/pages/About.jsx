@@ -18,7 +18,7 @@ const About = () => (
           <p className="np-label">About</p>
           <h1>The studio</h1>
           <p className="np-lede">
-            Project Neverphorm is an independent game studio founded in 2025 by Cody McCullough. There's been a lot of ideas, concepts, and visions being put together for that last 10+ years and it was decided
+            Project Neverphorm is an independent game studio founded in 2025 by Cody McCullough. There's been a lot of ideas, concepts, and visions being put together for the last 10+ years and it was decided
             that Cody wanted to finally cut back on playing and rather start building. Back in the day software and game engines were expensive, complicated, and pretty much out of reach for someone just starting
             out. Now, with tools like Unity and Blender available to anyone, there was no reason left to keep those ideas stuck in a notebook or just in thoughts. 
           </p>
