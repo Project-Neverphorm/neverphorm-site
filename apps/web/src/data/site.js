@@ -6,7 +6,7 @@ export const team = [
     name: "Cody McCullough",
     initials: "CM",
     role: "Founder · Creative Director",
-    photo: null,
+    photo: "apps/web/public/pictures/Screenshot 2026-09-29 221134.png",
     bio: "Hello! Growing up I've always enjoyed gaming and being overall just nerdy. I used to skateboard back in middle school, til I graudated. Was never much of an outdoor kind of guy til later on now I enjoy things like golfing, disc golfing, walking/running, traveling, and playing some tennis. ",
   },
   {
