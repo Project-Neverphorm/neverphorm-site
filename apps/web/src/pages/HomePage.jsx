@@ -114,18 +114,6 @@ const HomePage = () => {
         </section>*/}
 
         {/* Games section */}
-          <section className="max-w-6xl mx-auto px-6 py-24">
-            <div className="mb-10">
-              <p className="text-lg font-semibold uppercase tracking-[0.25em] text-black mb-3">
-                Games
-              </p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-              {games.map((game) => (
-                <GameCard key={game.title} {...game} />
-              ))}
-            </div>
-          </section>
 
           {/* Contact Section */}
           <section id="contactus" className="max-w-6xl mx-auto px-6 pb-24">
