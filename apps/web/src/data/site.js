@@ -7,7 +7,7 @@ export const team = [
     initials: "CM",
     role: "Owner, Creative Director",
     photo: "/pictures/cody.png",
-    bio: "Hello! Growing up I've always enjoyed gaming and being overall just nerdy. I used to skateboard back in middle school, til I graudated. Was never much of an outdoor kind of guy til later on now I enjoy things like golfing, disc golfing, walking/running, traveling, and playing some tennis. Well.. I'll play some tennis if I can get a buddy or three to come play some rounds. I'm also one who mains YouTube as my primary source of tv but here lately I've been on Hulu. I've been rewatching some How I Met Your Mother. ",
+    bio: "Hello! Growing up I've always enjoyed gaming and being overall just nerdy. I used to skateboard back in middle school, til I graudated. Was never much of an outdoor kind of guy til later on now I enjoy things like golfing, disc golfing, walking/running, traveling, and playing some tennis. Well.. I'll play some tennis if I can get a buddy or three to come play some rounds. I'm also someone who mains YouTube as my primary source of tv but here lately I've been on Hulu. I've been rewatching some How I Met Your Mother. ",
     favorites: ["Bioshock 2", "Fallout New Vegas", "Hogwarts Legacy"],
   },
   {
