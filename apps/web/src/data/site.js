@@ -8,6 +8,7 @@ export const team = [
     role: "Owner, Creative Director",
     photo: "/pictures/cody.png",
     bio: "Hello! Growing up I've always enjoyed gaming and being overall just nerdy. I used to skateboard back in middle school, til I graudated. Was never much of an outdoor kind of guy til later on now I enjoy things like golfing, disc golfing, walking/running, traveling, and playing some tennis. ",
+    favorites: ["Bioshock 2", "Fallout New Vegas", "Hogwarts Legacy"],
   },
   {
     name: "Matthew Brown",
@@ -15,6 +16,7 @@ export const team = [
     role: "Business Operations",
     photo: null,
     bio: "",
+    favorites: [],
   },
   {
     name: "Wynn Brownfield",
@@ -22,6 +24,7 @@ export const team = [
     role: "UI / UX Artist",
     photo: null,
     bio: "",
+    favorites: [],
   },
   {
     name: "Dakota Shroeder",
@@ -29,6 +32,7 @@ export const team = [
     role: "Game Designer",
     photo: null,
     bio: "",
+    favorites: [],
   },
 ];
 
