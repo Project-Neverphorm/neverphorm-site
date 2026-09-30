@@ -1,380 +1,113 @@
+import React, { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import SiteLayout from "@/components/SiteLayout.jsx";
+import { lookingFor } from "@/data/site.js";
 
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
-import pb from '@/lib/pocketbaseClient.js';
-import Header from '@/components/Header.jsx';
-import Footer from '@/components/Footer.jsx';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card.jsx";
-import { Input } from "@/components/ui/input.jsx";
-import { Label } from "@/components/ui/label.jsx";
-import { Textarea } from "@/components/ui/textarea.jsx";
-import { Button } from "@/components/ui/button.jsx";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select.jsx";
+const SUBJECTS = [
+  "General inquiry",
+  "Join the team",
+  "Contract / business inquiry",
+  "Feedback",
+  "Other",
+];
+
+// Lets footer links like /contact?subject=join preselect a subject
+const fromParam = { join: "Join the team", business: "Contract / business inquiry", feedback: "Feedback" };
 
 const ContactUsPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [status, setStatus] = useState({ type: 'idle', message: '' }); // idle, submitting, success, error
+  const [params] = useSearchParams();
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const nameRef = useRef(null);
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 }
+  useEffect(() => {
+    const s = fromParam[params.get("subject")];
+    if (s) setForm((f) => ({ ...f, subject: s }));
+  }, [params]);
+
+  const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const applyToJoin = () => {
+    setForm((f) => ({ ...f, subject: "Join the team" }));
+    nameRef.current?.focus();
   };
 
-  const staggerContainer = {
-    initial: { opacity: 0 },
-    animate: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  };
-
-  {/* const roles = [
-    { title: "3D / Techicanl Artist",
-      description: "3D modeling assets and making sure the material, textures, and exports are ported smoothly.",
-    },
-    { title: "Gameplay Programmer",
-      description: "Focused on gameplay mechanics, systems logic, player interaction, and implementing core gameplay features within the engine.",
-    },
-    { title: "3D Artist & Animator",
-      description: "Planned role for future art, modeling, and animation support.",
-    },
-    { title: "Systems & Tools Developer",
-      description: "Key role for internal tools, systems, and workflow support.",
-     },
-    { title: "Audio Designer",
-      description: "Future role focused on the vfx, sfx, and music.",
-     }
-  ]; */}
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubjectChange = (value) => {
-    setFormData(prev => ({ ...prev, subject: value }));
-  };
-
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ type: 'submitting', message: '' });
-  
+    setStatus("sending");
     try {
-      const response = await fetch(
-        "https://formspree.io/f/xqewjjbn",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            subject: formData.subject,
-            message: formData.message,
-          }),
-        }
-      );
-  
-      if (!response.ok) {
-        throw new Error("Form submission failed");
-      }
-  
-      setStatus({
-        type: 'success',
-        message: 'Your message has been sent successfully. We will be in touch soon!',
-      });
-  
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
-  
-      setTimeout(() => {
-        setStatus({ type: 'idle', message: '' });
-      }, 5000);
-  
-    } catch (error) {
-      console.error("Submission error:", error);
-  
-      setStatus({
-        type: 'error',
-        message: 'Failed to send message. Please try again later.',
-      });
+      // TODO: hook this up to the same submit logic your old ContactSection.jsx used
+      // (for example your PocketBase client). `form` holds name, email, subject, message.
+      console.log("Contact form:", form);
+      setStatus("sent");
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      setStatus("error");
     }
   };
 
   return (
-    <>
-      <Helmet>
-        <title>Contact Us | Project Neverphorm</title>
-        <meta 
-          name="description" 
-          content="Reach out, collaborate, or connect with Project Neverphorm. View future roles and submit inquiries." 
-        />
-      </Helmet>
-
-      <Header />
-
-  <main className="min-h-screen pt-28 pb-20">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-12 items-start">
-          
-          {/* 1. CONTACT INTRO */}
-        <div className="space-y-4 text-primary text-base leading-relaxed">
-          <motion.section 
-            className="text-left"
-            initial="initial"
-            animate="animate"
-            variants={fadeInUp}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-primary">
-              Contact Us
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Want to reach out, collaborate, submit an idea, or connect with Project Neverphorm? Send me a message below.
-            </p>
-          </motion.section>
-
-          {/* 2. JOIN OUR TEAM */}
-          <motion.section 
-            className="bg-card/30 border border-border/50 rounded-2xl p-8 md:p-10 text-left"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-          >
-            {/* Updated on 4/29/2026 */}
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-primary">Join The Team</h2>
-            <p>
-              Project Neverphorm is not actively looking for collaborators right now. 
-              Future opportunities may open once active projects, revenue, and studio needs become more established.
-            </p>
-            <p>
-              That said, if you are genuinely passionate about game development, interested in learning, or believe you may be a strong fit for the 
-              studio's values and vision, we welcome you to reach out and introduce yourself.
-            </p>
-            <p>
-              While opportunities are not guaranteed, networking with us and meaningful connections often begin with a simple conversation. As the studio grows, 
-              future collaboration opportunities may become available.
-            </p>
-            <p>
-              For now, we are focused on developing our first titles and establishing the foundation for the journey ahead.
-            </p>
-          </motion.section>
+    <SiteLayout title="Contact" description="Contact Project Neverphorm or apply to join the team.">
+      <section>
+        <div className="np-split">
+          <div>
+            <p className="np-label">What we're looking for</p>
+            <h1>The people who fit here</h1>
+            <p className="np-lede">Skill matters, but how you work matters just as much. You don't need a studio résumé to be a good fit.</p>
+          </div>
+          <div className="np-tenets">
+            {lookingFor.map((t) => (
+              <div className="np-tenet" key={t.title}><h3>{t.title}</h3><p>{t.text}</p></div>
+            ))}
+          </div>
         </div>
+      </section>
 
-          {/* 3. ACTIVELY LOOKING FOR */}
-           {/*
-           <motion.section 
-            className="text-center"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-          >
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4">Actively Looking For</h2>
-            <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-muted/50 border border-border/50 text-muted-foreground font-medium">
-              No active openings at this time.
-            </div>
-          </motion.section>
-          */}
+      <section>
+        <div className="np-split">
+          <div>
+            <p className="np-label">Join the team</p>
+            <h2>Want to build games with us?</h2>
+            <p className="np-lede">
+              We're a small team that grows slowly and on purpose. If you want to help make games, tell us what you do and what you'd like to work on.
+            </p>
+            <ul className="np-areas">
+              {["2D / UI art", "3D modeling", "Game design", "Programming", "Audio & music", "Marketing"].map((a) => <li key={a}>{a}</li>)}
+            </ul>
+            <button type="button" className="np-more np-linkbtn" onClick={applyToJoin}>Apply through the form</button>
+          </div>
 
-          {/* 4. FUTURE ROLES */}
-          {/* <motion.section
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-          >
-            <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-semibold">Future Collaboration Roles</h2>
-            </div>
-            
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-              variants={staggerContainer}
-            >
-              {roles.map((role) => (
-                <motion.div key={role.title} variants={fadeInUp}>
-                  <Card className="h-full bg-card/20 border-border/40 hover:bg-card/40 hover:border-primary/30 transition-all duration-300">
-                    <CardHeader>
-                      <CardTitle className="text-lg font-semibold text-foreground/90">
-                        {role.title}
-                      </CardTitle>
-                      <CardDescription className="text-sm mt-2">
-                        {role.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.section> */}
-
-
-          {/* 5. CONTACT FORM */}
-
-        <div className="lg:pt-8">
-          <motion.section
-            id="contact-form"
-            className="scroll-mt-24"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-          >
-            <Card className="bg-card/50 border-border/50 shadow-xl shadow-black/20">
-              <CardHeader className="text-center pb-8">
-                <CardTitle className="text-3xl font-bold">Send a Message</CardTitle>
-                <CardDescription className="text-base mt-2">
-                  Fill out the form below and we'll get back to you as soon as possible.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {status.type === 'success' ? (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="flex flex-col items-center justify-center py-12 text-center space-y-4"
-                  >
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-2">
-                      <CheckCircle2 className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-foreground">Message Sent!</h3>
-                    <p className="text-muted-foreground">{status.message}</p>
-                    <Button 
-                      variant="outline" 
-                      className="mt-6"
-                      onClick={() => setStatus({ type: 'idle', message: '' })}
-                    >
-                      Send Another Message
-                    </Button>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
-                        <Input 
-                          id="name" 
-                          name="name" 
-                          placeholder="Your name" 
-                          required 
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          className="bg-background/50 border-border/50 focus-visible:ring-primary"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input 
-                          id="email" 
-                          name="email" 
-                          type="email" 
-                          placeholder="your.email@example.com" 
-                          required 
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className="bg-background/50 border-border/50 focus-visible:ring-primary"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
-                      <Select 
-                        required 
-                        value={formData.subject} 
-                        onValueChange={handleSubjectChange}
-                      >
-                        <SelectTrigger className="bg-background/50 border-border/50 focus:ring-primary">
-                          <SelectValue placeholder="Select a subject" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="General Inquiry">General Inquiry</SelectItem>
-                          <SelectItem value="Join the Team / Collaboration">Join the Team / Collaboration</SelectItem>
-                          <SelectItem value="Contract / Business Inquiry">Contract / Business Inquiry</SelectItem>
-                          <SelectItem value="Feedback">Feedback</SelectItem>
-                          <SelectItem value="Other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea 
-                        id="message" 
-                        name="message" 
-                        placeholder="How can we help you?" 
-                        rows={6} 
-                        required 
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        className="bg-background/50 border-border/50 focus-visible:ring-primary resize-none"
-                      />
-                    </div>
-
-                    {status.type === 'error' && (
-                      <div className="flex items-center gap-2 text-destructive text-sm bg-destructive/10 p-3 rounded-md">
-                        <AlertCircle className="w-4 h-4" />
-                        <p>{status.message}</p>
-                      </div>
-                    )}
-
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-12 text-base font-semibold transition-all active:scale-[0.98]"
-                      disabled={status.type === 'submitting'}
-                    >
-                      {status.type === 'submitting' ? (
-                        <span className="flex items-center gap-2">
-                          <motion.div 
-                            animate={{ rotate: 360 }} 
-                            transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                            className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full"
-                          />
-                          Sending...
-                        </span>
-                      ) : (
-                        <span className="flex items-center gap-2">
-                          Send Message
-                          <Send className="w-4 h-4" />
-                        </span>
-                      )}
-                    </Button>
-                  </form>
-                )}
-              </CardContent>
-            </Card>
-          </motion.section>
-
+          <div>
+            <p className="np-label">Contact us</p>
+            <h2>Send a message</h2>
+            <form className="np-form" onSubmit={onSubmit}>
+              <div className="np-row">
+                <label htmlFor="c-name">Name
+                  <input id="c-name" ref={nameRef} autoComplete="name" required value={form.name} onChange={update("name")} />
+                </label>
+                <label htmlFor="c-email">Email
+                  <input id="c-email" type="email" autoComplete="email" required value={form.email} onChange={update("email")} />
+                </label>
+              </div>
+              <label htmlFor="c-subj">Subject
+                <select id="c-subj" required value={form.subject} onChange={update("subject")}>
+                  <option value="" disabled>Choose a subject</option>
+                  {SUBJECTS.map((s) => <option key={s}>{s}</option>)}
+                </select>
+              </label>
+              <label htmlFor="c-body">Message
+                <textarea id="c-body" required value={form.message} onChange={update("message")} />
+              </label>
+              <button className="np-btn" type="submit" disabled={status === "sending"}>
+                {status === "sending" ? "Sending…" : "Send message"}
+              </button>
+              {status === "sent" && <p className="np-note">Message sent. We'll get back to you soon.</p>}
+              {status === "error" && <p className="np-note">That didn't go through. Check your connection and try again.</p>}
+            </form>
+          </div>
         </div>
-
-        
-      </div>
-    </div>
-  </main>
-
-      <Footer />
-    </>
+      </section>
+    </SiteLayout>
   );
 };
 

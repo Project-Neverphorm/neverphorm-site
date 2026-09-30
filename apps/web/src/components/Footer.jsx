@@ -1,94 +1,49 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { socials } from "@/data/site.js";
 
-import React from 'react';
-import { Instagram, X, Facebook, Music, Youtube, ArrowUp } from 'lucide-react';
-
-const Footer = () => {
-  const socialLinks = [
-    { 
-      name: 'TikTok', 
-      icon: Music, 
-      url: 'https://www.tiktok.com/@projectneverphorm',
-      ariaLabel: 'Follow us on TikTok'
-    },
-    { 
-      name: 'Instagram', 
-      icon: Instagram, 
-      url: 'https://www.instagram.com/projectneverphorm?igsh=MTdqaGp4bnN6MW9ieQ%3D%3D&utm_source=qr',
-      ariaLabel: 'Follow us on Instagram'
-    },
-    { 
-      name: 'YouTube', 
-      icon: Youtube, 
-      url: 'https://www.youtube.com/@ProjectNeverphorm',
-      ariaLabel: 'Follow us on YouTube'
-    },
-    { 
-      name: 'X', 
-      icon: X, 
-      url: 'https://x.com/neverphormdev?s=11',
-      ariaLabel: 'Follow us on X'
-    },
-    { 
-      name: 'Facebook', 
-      icon: Facebook, 
-      url: 'https://www.facebook.com/share/1CZQpA5m9y/?mibextid=wwXIfr',
-      ariaLabel: 'Follow us on Facebook'
-    },
-  ];
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  return (
-    <footer className="border-t border-border/50 bg-card/30 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.ariaLabel}
-                  className="w-10 h-10 rounded-xl bg-secondary/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary transition-all duration-300 hover:scale-110"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              );
-            })}
-            
-            <span className="w-1 h-1 rounded-full bg-border mx-1 hidden sm:block"></span>
-            
-            <button
-              onClick={scrollToTop}
-              aria-label="Back to top"
-              className="w-10 h-10 rounded-xl bg-secondary/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary transition-all duration-300 hover:scale-110"
-            >
-              <ArrowUp className="w-5 h-5" />
-            </button>
-          </div>
-          
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="/privacy" className="hover:text-foreground transition-all duration-300">
-              Privacy Policy
-            </a>
-            <span className="w-1 h-1 rounded-full bg-border"></span>
-            <a href="terms" className="hover:text-foreground transition-all duration-300">
-              Terms of Service
-            </a>
-          </div>
-          
-          <p className="text-sm text-muted-foreground">
-            © 2025 Project Neverphorm LLC. All rights reserved.
-          </p>
-        </div>
+const Footer = () => (
+  <footer className="np-footer">
+    <div className="np-foot">
+      <div className="np-foot-brand">
+        <Link className="np-mark" to="/">Project Neverphorm</Link>
+        <p>An independent game studio. Now building Duskline.</p>
+        <Link className="np-btn" to="/contact">Get in touch</Link>
       </div>
-    </footer>
-  );
-};
+
+      <nav className="np-foot-col" aria-label="Site">
+        <h4>Site</h4>
+        <Link to="/">Home</Link>
+        <Link to="/games">Games</Link>
+        <Link to="/about">About</Link>
+        <Link to="/culture">Culture</Link>
+        <Link to="/contact">Contact</Link>
+      </nav>
+
+      <nav className="np-foot-col" aria-label="Studio">
+        <h4>Studio</h4>
+        <Link to="/contact?subject=join">Join the team</Link>
+        <Link to="/contact?subject=business">Business inquiries</Link>
+        <Link to="/games">Duskline</Link>
+      </nav>
+
+      <nav className="np-foot-col" aria-label="Follow">
+        <h4>Follow</h4>
+        {socials.map((s) => (
+          <a key={s.label} href={s.href} target="_blank" rel="noreferrer">{s.label}</a>
+        ))}
+      </nav>
+    </div>
+
+    <div className="np-foot-base">
+      <span>© {new Date().getFullYear()} Project Neverphorm LLC</span>
+      <span className="np-legal">
+        <Link to="/privacy">Privacy Policy</Link>
+        <Link to="/terms">Terms of Service</Link>
+        <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Back to top ↑</a>
+      </span>
+    </div>
+  </footer>
+);
 
 export default Footer;

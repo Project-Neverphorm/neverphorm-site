@@ -1,36 +1,33 @@
-import Header from "@/components/Header.jsx";
-import Footer from "@/components/Footer.jsx";
-import GameCard from "@/components/GameCard.jsx";
+import React from "react";
+import SiteLayout from "@/components/SiteLayout.jsx";
+import { duskline } from "@/data/site.js";
 
-const games = [
-];
+const Games = () => (
+  <SiteLayout title="Games" description="Games from Project Neverphorm, including Duskline.">
+    <section>
+      <p className="np-label">Games</p>
+      <h1>Our games</h1>
+      <p className="np-lede">Everything the studio has in the works. More titles get added here as they're announced.</p>
+    </section>
 
-export default function Games() {
-  return (
-    <>
-      <Header />
+    <section>
+      <div className="np-split">
+        <div>
+          <span className="np-status">{duskline.status}</span>
+          <h2 style={{ marginTop: 16 }}>{duskline.title}</h2>
+          <p className="np-lede">{duskline.long}</p>
+          <ul className="np-features">
+            {duskline.features.map((f) => <li key={f}>{f}</li>)}
+          </ul>
+        </div>
+        <dl className="np-game np-specs">
+          {duskline.specs.map(([k, v]) => (
+            <React.Fragment key={k}><dt>{k}</dt><dd>{v}</dd></React.Fragment>
+          ))}
+        </dl>
+      </div>
+    </section>
+  </SiteLayout>
+);
 
-      <main className="min-h-screen bg-white pt-20">
-        <section className="px-6 pb-20 sm:px-10 lg:px-20">
-          <div className="ml-0 mr-auto max-w-3xl">
-            <div className="mb-10">
-              <p className="mb-4 text-medium font-semibold uppercase tracking-[0.25em] text-primary">
-                Games
-              </p>
-              <p className="max-w-2xl text-lg leading-relaxed text-neutral-600">
-              </p>
-            </div>
-
-            <div className="space-y-8">
-              {games.map((game) => (
-                <GameCard key={game.title} {...game} />
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </>
-  );
-}
+export default Games;
