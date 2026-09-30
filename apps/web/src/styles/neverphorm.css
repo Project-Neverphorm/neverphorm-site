@@ -27,7 +27,14 @@ html, body { background: var(--np-ink); }
 .np *, .np *::before, .np *::after { box-sizing: border-box; }
 .np a { color: inherit; }
 .np :focus-visible { outline: 2px solid var(--np-accent); outline-offset: 3px; }
-.np-wrap { max-width: 1360px; margin: 0 auto; }
+.np-wrap {
+  max-width: 1360px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
 
 /* Header */
 .np-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 28px; }
@@ -37,7 +44,7 @@ html, body { background: var(--np-ink); }
 .np-nav a:hover, .np-nav a.active { color: var(--np-bone); }
 
 /* Sections and type */
-.np-page { min-height: 60vh; }
+.np-page { flex: 1 0 auto; }
 .np section { padding-block: clamp(56px, 9vw, 112px); border-top: 1px solid var(--np-line); }
 .np main > section:first-of-type { border-top: 0; padding-top: clamp(40px, 7vw, 88px); }
 .np-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }

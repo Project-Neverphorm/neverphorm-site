@@ -7,28 +7,28 @@ export const team = [
     initials: "CM",
     role: "Founder · Creative Director",
     photo: null,
-    bio: "Started the studio after years of filling notebooks with game ideas. Leads the creative direction, writes code, and builds 3D in Blender.",
+    bio: "Hello! Growing up I've always enjoyed gaming and being overall just nerdy. I used to skateboard back in middle school, til I graudated. Was never much of an outdoor kind of guy til later on now I enjoy things like golfing, disc golfing, walking/running, traveling, and playing some tennis. ",
   },
   {
     name: "Matt",
     initials: "M",
     role: "Business Operations",
     photo: null,
-    bio: "Keeps the business side running, from planning and partnerships to making sure the studio can grow.",
+    bio: "",
   },
   {
     name: "Wynn",
     initials: "W",
     role: "UI / UX Artist",
     photo: null,
-    bio: "Designs the menus, HUDs, and 2D art players see and touch every time they play.",
+    bio: "",
   },
   {
     name: "Dakota",
     initials: "D",
     role: "Game Designer",
     photo: null,
-    bio: "Shapes how the games play, including the achievement lists, from the free ones to the ones almost nobody finishes.",
+    bio: "",
   },
 ];
 
@@ -53,28 +53,20 @@ export const duskline = {
     "A precision platformer in a city that never sees daylight. Thirty hand-built levels, then Sprawl Mode, a race across alien terrain. Solo or with up to three friends.",
   long:
     "A precision platformer set in a city that never sees daylight. Sleek buildings, glowing neon edges, and hazards that demand perfect timing. Play solo or race through every level with up to three friends.",
-  features: [
-    "30 hand-built levels",
-    "Sprawl Mode, a race to the finish across alien terrain",
-    "Solo or 1–4 player online co-op",
-    "Hidden collectibles and secrets in every level",
-    "Achievements from easy to brutal",
-  ],
   specs: [
     ["Genre", "Precision platformer"],
     ["Players", "1–4, online co-op"],
     ["Engine", "Unity"],
-    ["Price", "$19.99"],
+    ["Price", "TBA"],
     ["Platforms", "Steam, itch.io, Xbox, PlayStation, Nintendo Switch 2"],
     ["Release", "TBA"],
   ],
-  platformsShort: "Steam · itch.io · Xbox · PlayStation · Switch 2",
+  platformsShort: "Steam · itch.io · Xbox · PlayStation · Switch 1/2",
 };
 
 // Replace "#" with your real links, or delete the ones you don't use
 export const socials = [
-  { label: "Discord", href: "#" },
-  { label: "YouTube", href: "#" },
-  { label: "X / Twitter", href: "#" },
-  { label: "Steam", href: "#" },
+  { label: "YouTube", href: "https://www.youtube.com/@ProjectNeverphorm" },
+  { label: "X", href: "https://x.com/neverphormdev?s=11" },
+  { label: "Facebook", href: "https://www.facebook.com/projectneverphorm" },
 ];
