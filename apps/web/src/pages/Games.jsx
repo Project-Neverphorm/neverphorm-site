@@ -16,9 +16,6 @@ const Games = () => (
           <span className="np-status">{duskline.status}</span>
           <h2 style={{ marginTop: 16 }}>{duskline.title}</h2>
           <p className="np-lede">{duskline.long}</p>
-          <ul className="np-features">
-            {duskline.features.map((f) => <li key={f}>{f}</li>)}
-          </ul>
         </div>
         <dl className="np-game np-specs">
           {duskline.specs.map(([k, v]) => (
