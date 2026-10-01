@@ -24,7 +24,7 @@ export const team = [
     role: "UI / UX Artist",
     photo: "/pictures/wynn.png",
     bio: "I spent all my life gaming. I started heavily gaming in the PS2 era with games like Grand Theft Auto San Andreas. One of my favorite genra of modern games is 'rogue lites'. Outside of gaming I enjoy redneck kind of stuff like going to the racetrack.",
-    favorites: [],
+    favorites: ["Grand Theft Auto", "Roller Coaster Tycoon", "Fortnite"],
   },
   {
     name: "Dakota Shroeder",
