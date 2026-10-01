@@ -22,8 +22,8 @@ export const team = [
     name: "Wynn Brownfield",
     initials: "W",
     role: "UI / UX Artist",
-    photo: null,
-    bio: "",
+    photo: "/pictures/wynn.png",
+    bio: "I spent all my life gaming. I started heavily gaming in the PS2 era with games like Grand Theft Auto San Andreas. One of my favorite genra of modern games is 'rogue lites'. Outside of gaming I enjoy redneck kind of stuff like going to the racetrack.",
     favorites: [],
   },
   {
