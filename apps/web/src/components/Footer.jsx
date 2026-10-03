@@ -36,7 +36,7 @@ const Footer = () => (
     </div>
 
     <div className="np-foot-base">
-      <span>© {new Date().getFullYear()} Project Neverphorm LLC</span>
+      <span>© 2025 - {new Date().getFullYear()} Project Neverphorm LLC</span>
       <span className="np-legal">
         <Link to="/privacy">Privacy Policy</Link>
         <Link to="/terms">Terms of Service</Link>
