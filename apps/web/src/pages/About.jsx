@@ -24,7 +24,7 @@ const About = () => (
           </p>
           <p className="np-lede">
             There's already a catalog that is planned, mapped out, and deliberately varied, from platformers to narrative games to open worlds. We're refusing to stay stuck on one singular genre. 
-            We are a very collaborative team and that's what we thrive on. Everyone here has a voice, innovative skillsets, opinions, thoughts, ideas, concepts, and so on, and we intend on strengthening all those values
+            We are a collaborative team and that's what we thrive on. Everyone here has a voice, innovative skillsets, opinions, thoughts, ideas, concepts, and so on, and we intend on strengthening all those values
             as we grow as a team.
           </p>
         </div>
