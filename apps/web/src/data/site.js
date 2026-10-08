@@ -30,9 +30,9 @@ export const team = [
     name: "Dakota Shroeder",
     initials: "D",
     role: "Game Designer",
-    photo: null,
-    bio: "",
-    favorites: [],
+    photo: "/pictures/dakota.png",
+    bio: "Gamer at heart, always down to find my next favorite game. I’m into a little bit of everything, love a good adventure, and enjoy meeting people who share the same passion for gaming.",
+    favorites: ["Spongebob Battle for Bikini Bottom Rehydrated", "Kingdom Hearts", "Lego Batman 1",],
   },
 ];
 
