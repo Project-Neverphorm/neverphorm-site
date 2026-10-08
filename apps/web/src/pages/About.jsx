@@ -37,8 +37,7 @@ const About = () => (
     </section>
 
     <section>
-      <p className="np-label">Meet the team</p>
-      <h2>The people behind the games</h2>
+      <h2 className="np-label">Meet the team</h2>
       <div className="np-crew">
         {team.map((p) => (
           <article className="np-bio" key={p.name}>
