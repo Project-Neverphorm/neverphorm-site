@@ -15,8 +15,8 @@ export const team = [
     initials: "M",
     role: "Business Operations",
     photo: "/pictures/matt.png",
-    bio: "",
-    favorites: ["Grand Theft Auto 5"],
+    bio: "Hailing from the Lone Star state of Texas, I work in business operations with a background in GIS. I'm a lifelong multi-hobbyist who loves the outdoors and the water, musical instruments (percussion/piano), theology, and I geek out on maps and satellites, optics and cars.",
+    favorites: ["Splinter Cell", "Call of Duty", "NCAA"],
   },
   {
     name: "Wynn Brownfield",
