@@ -27,11 +27,6 @@ const About = () => (
             as we grow as a team.
           </p>
         </div>
-        <dl className="np-game np-specs">
-          {facts.map(([k, v]) => (
-            <React.Fragment key={k}><dt>{k}</dt><dd>{v}</dd></React.Fragment>
-          ))}
-        </dl>
       </div>
     </section>
 
