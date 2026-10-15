@@ -24,7 +24,7 @@ export const team = [
     role: "Marketing & Community",
     photo: null,
     bio: "",
-    favorites: [],
+    favorites: ["Animal Crossing"],
   },
   {
     name: "Wynn Brownfield",
