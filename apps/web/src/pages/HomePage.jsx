@@ -9,11 +9,7 @@ const HomePage = () => (
     <section>
       <div className="np-split">
         <div>
-          <p className="np-label">Independent game studio</p>
-          <h1>Fifteen years of ideas, finally getting made.</h1>
-          <p className="np-lede">
-            Project Neverphorm is a small studio building games across every genre. No house style, just the next idea worth making.
-          </p>
+          <h1>Independent game studio</h1>
         </div>
         <div>
           <p className="np-label">Games</p>
@@ -31,8 +27,7 @@ const HomePage = () => (
     <section>
       <div className="np-split">
         <div>
-          <p className="np-label">About</p>
-          <h2>The studio</h2>
+          <h2>About the Studio</h2>
           <p className="np-lede">
             Founded in 2025 by Cody McCullough after more than fifteen years of concepting. The catalog is planned and varied, from platformers to narrative games to open worlds, and each one gets made when it's ready.
           </p>

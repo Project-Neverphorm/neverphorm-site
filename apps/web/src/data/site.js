@@ -19,6 +19,14 @@ export const team = [
     favorites: ["Splinter Cell", "Call of Duty", "NCAA"],
   },
   {
+    name: "Katie Fogarty",
+    initials: "K",
+    role: "Marketing & Community",
+    photo: null,
+    bio: "",
+    favorites: [],
+  },
+  {
     name: "Wynn Brownfield",
     initials: "W",
     role: "UI / UX Artist",
