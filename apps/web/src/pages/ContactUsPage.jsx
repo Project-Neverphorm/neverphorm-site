@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout.jsx";
 import { lookingFor } from "@/data/site.js";
+import { useCms } from "@/lib/cms";
 
 const STUDIO_EMAIL = "projectneverphorm@gmail.com";
 
@@ -19,9 +20,20 @@ const fromParam = { join: "Join the team", business: "Contract / business inquir
 const mailto = (subject) =>
   `mailto:${STUDIO_EMAIL}?subject=${encodeURIComponent(subject || "Hello Project Neverphorm")}`;
 
+// Shown instantly and used if the portal can't be reached
+const FALLBACK_ROLES = ["2D / UI art", "3D modeling", "Game design", "Programming", "Audio & music", "Marketing"].map(
+  (title) => ({ id: title, title })
+);
+
 const ContactUsPage = () => {
   const [params] = useSearchParams();
   const [subject, setSubject] = useState("General inquiry");
+
+  const { data: roles } = useCms(
+    "job_openings",
+    "select=id,title&published=eq.true&order=sort_order.asc",
+    FALLBACK_ROLES
+  );
 
   useEffect(() => {
     const s = fromParam[params.get("subject")];
@@ -35,11 +47,16 @@ const ContactUsPage = () => {
           <div>
             <p className="np-label">What we're looking for</p>
             <h1>The people who fit here</h1>
-            <p className="np-lede">Skill matters, but how you work matters just as much. You don't need a studio résumé to be a good fit.</p>
+            <p className="np-lede">
+              Skill matters, but how you work matters just as much. You don't need a studio résumé to be a good fit.
+            </p>
           </div>
           <div className="np-tenets">
             {lookingFor.map((t) => (
-              <div className="np-tenet" key={t.title}><h3>{t.title}</h3><p>{t.text}</p></div>
+              <div className="np-tenet" key={t.title}>
+                <h3>{t.title}</h3>
+                <p>{t.text}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -51,12 +68,21 @@ const ContactUsPage = () => {
             <p className="np-label">Join the team</p>
             <h2>Want to build games with us?</h2>
             <p className="np-lede">
-              We're a small team that grows slowly and on purpose. If you want to help make games, tell us what you do and what you'd like to work on.
+              We're a small team that grows slowly and on purpose. If you want to help make games, tell us what you do
+              and what you'd like to work on.
             </p>
-            <ul className="np-areas">
-              {["2D / UI art", "3D modeling", "Game design", "Programming", "Audio & music", "Marketing"].map((a) => <li key={a}>{a}</li>)}
-            </ul>
-            <a className="np-more" href={mailto("Join the team")}>Email us about joining</a>
+            {roles.length > 0 ? (
+              <ul className="np-areas">
+                {roles.map((r) => (
+                  <li key={r.id}>{r.title}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className="np-note">No open roles right now, but feel free to reach out anyway.</p>
+            )}
+            <a className="np-more" href={mailto("Join the team")}>
+              Email us about joining
+            </a>
           </div>
 
           <div>
@@ -64,12 +90,17 @@ const ContactUsPage = () => {
             <h2>Send us an email</h2>
             <p className="np-lede">Pick what it's about and we'll open your mail app with everything ready to go.</p>
             <div className="np-form">
-              <label htmlFor="c-subj">Subject
+              <label htmlFor="c-subj">
+                Subject
                 <select id="c-subj" value={subject} onChange={(e) => setSubject(e.target.value)}>
-                  {SUBJECTS.map((s) => <option key={s}>{s}</option>)}
+                  {SUBJECTS.map((s) => (
+                    <option key={s}>{s}</option>
+                  ))}
                 </select>
               </label>
-              <a className="np-btn" href={mailto(subject)}>Contact us</a>
+              <a className="np-btn" href={mailto(subject)}>
+                Contact us
+              </a>
               <p className="np-note">Or email us directly: {STUDIO_EMAIL}</p>
             </div>
           </div>
