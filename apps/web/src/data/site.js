@@ -13,7 +13,7 @@ export const team = [
   {
     name: "Matthew Brown",
     initials: "M",
-    role: "Business Operations",
+    role: "Business Operations Lead",
     photo: "/pictures/matt.png",
     bio: "Hailing from the Lone Star state of Texas, I work in business operations with a background in GIS. I'm a lifelong multi-hobbyist who loves the outdoors and the water, musical instruments (percussion/piano), theology, and I geek out on maps and satellites, optics and cars.",
     favorites: ["Splinter Cell", "Call of Duty", "NCAA"],
@@ -21,7 +21,7 @@ export const team = [
   {
     name: "Katie Fogarty",
     initials: "K",
-    role: "Marketing & Community",
+    role: "Marketing & Community Lead",
     photo: null,
     bio: "",
     favorites: ["Animal Crossing"],
@@ -29,7 +29,7 @@ export const team = [
   {
     name: "Wynn Brownfield",
     initials: "W",
-    role: "UI / UX Artist",
+    role: "UI/UX Artist",
     photo: "/pictures/wynn.png",
     bio: "I spent all my life gaming. I started heavily gaming in the PS2 era with games like Grand Theft Auto San Andreas. One of my favorite genre of modern games is 'rogue lites'. Outside of gaming I enjoy redneck kind of stuff like going to the racetrack.",
     favorites: ["Grand Theft Auto", "Roller Coaster Tycoon", "Fortnite"],
@@ -37,7 +37,7 @@ export const team = [
   {
     name: "Dakota Shroeder",
     initials: "D",
-    role: "Game Designer & QA Tester",
+    role: "Level Designer",
     photo: "/pictures/dakota.png",
     bio: "Gamer at heart, always down to find my next favorite game. I’m into a little bit of everything, love a good adventure, and enjoy meeting people who share the same passion for gaming.",
     favorites: ["Spongebob Battle for Bikini Bottom Rehydrated", "Kingdom Hearts", "Lego Batman 1",],
