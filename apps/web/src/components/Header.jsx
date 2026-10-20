@@ -11,9 +11,7 @@ const links = [
 
 const Header = () => (
   <header className="np-header">
-    <Link to="/" className="np-mark" aria-label="Project Neverphorm home">
-      <img src="/pictures/pn-logo.png" alt="Project Neverphorm" />
-    </Link>
+    <Link className="np-mark" to="/">Project Neverphorm</Link>
     <nav className="np-nav" aria-label="Main">
       {links.map((l) => (
         <NavLink key={l.to} to={l.to} end={l.end} className={({ isActive }) => (isActive ? "active" : undefined)}>
