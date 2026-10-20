@@ -247,3 +247,9 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   body::before, body::after { animation: none; }
 }
+
+/* No animation, keep the static film texture */
+body::before,
+body::after {
+  animation: none;
+}
