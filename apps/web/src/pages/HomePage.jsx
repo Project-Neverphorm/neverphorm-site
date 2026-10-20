@@ -13,7 +13,19 @@ const HomePage = () => {
       <section>
         <div className="np-split">
           <div>
-            <h1>Independent game studio</h1>
+            <h1 style={{ margin: 0 }}>
+              <img
+                src="/pictures/indie-game-studio.png"
+                alt="Independent game studio"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  maxWidth: 520,
+                  height: "auto",
+                  mixBlendMode: "multiply",
+                }}
+              />
+            </h1>
           </div>
           <div>
             <p className="np-label">Games</p>
