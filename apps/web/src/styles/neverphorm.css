@@ -73,7 +73,7 @@ html, body { background: var(--np-ink); }
 .np-features li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--np-accent); transform: translateY(-2px); }
 
 /* Avatars */
-.np-photo { width: 120px; height: 120px; border-radius: 50%; background: var(--np-slab); border: 1px solid var(--np-line); display: grid; place-items: center; overflow: hidden; font-family: var(--np-display); font-size: 30px; color: var(--np-dim); flex: none; }
+.np-photo { border: 2px solid var(--np-line); filter: none; }
 .np-photo img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Team preview (home) */
