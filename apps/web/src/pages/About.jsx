@@ -13,16 +13,17 @@ const About = () => {
           <div>
             <h2 className="np-label">About the Studio</h2>
             <p className="np-lede">
-              Project Neverphorm is an independent game studio founded in 2025 by Cody McCullough. There's been a lot of
+              Project Neverphorm is an independent game studio founded in 2025 by Cody. There's been a lot of
               ideas, concepts, and visions being put together for the last 10+ years and it was decided that Cody wanted
               to finally cut back on playing and rather start building. Back in the day software and game engines were
               expensive, complicated, and pretty much out of reach for someone just starting out. Now, with tools like
-              Unity and Blender available to anyone, there was no reason left to keep those ideas stuck in a notebook or
+              Unity, UE, Blender, ZBrush, and more available to anyone, there was no reason left to keep those ideas stuck in a notebook or
               just in thoughts.
             </p>
             <p className="np-lede">
               There's already a catalog that is planned, mapped out, and deliberately varied, from platformers to
-              narrative games to open worlds. We're refusing to stay stuck on one singular genre. We are a collaborative
+              narrative games to open worlds. We're refusing to stay stuck on one singular genre, we like having our
+              options open. Some visions, game and art directions work best in specific areas. We are a collaborative
               team and that's what we thrive on. Everyone here has a voice, innovative skillsets, opinions, thoughts,
               ideas, concepts, and so on, and we intend on strengthening all those values as we grow as a team.
             </p>
