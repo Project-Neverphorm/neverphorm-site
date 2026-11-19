@@ -25,7 +25,7 @@ const HomePage = () => {
             </h1>
           </div>
           <div>
-            <p className="np-label">Games</p>
+            <h2>Games</h2>
             <article className="np-game">
               <h2 style={{ margin: 0 }}>In development</h2>
             </article>
@@ -34,7 +34,6 @@ const HomePage = () => {
       </section>
 
       <section id="about">
-        <p className="np-label">About</p>
         <h2>About the Studio</h2>
         <p className="np-lede">
           Project Neverphorm is an independent game studio founded in 2025 by Cody. There's been a lot of
