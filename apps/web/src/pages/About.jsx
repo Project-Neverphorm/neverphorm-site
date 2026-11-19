@@ -30,27 +30,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      <section>
-        <h2 className="np-label">Meet the team</h2>
-        <div className="np-crew">
-          {team.map((p) => (
-            <article className="np-bio" key={p.name}>
-              <Avatar person={p} />
-              <div>
-                <h3>{p.name}</h3>
-                <span className="np-role">{p.role}</span>
-                {p.bio && <p>{p.bio}</p>}
-                {p.favorites?.length > 0 && (
-                  <p className="np-favs">
-                    <span>Favorite games:</span> {p.favorites.join(", ")}
-                  </p>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
     </SiteLayout>
   );
 };
