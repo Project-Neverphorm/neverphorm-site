@@ -1,6 +1,5 @@
 import React from "react";
 import SiteLayout from "@/components/SiteLayout.jsx";
-import { duskline } from "@/data/site.js";
 
 // TODO: set this to the real studio inbox
 const CONTACT_EMAIL = "contact@projectneverphorm.com";
@@ -28,10 +27,7 @@ const HomePage = () => {
           <div>
             <p className="np-label">Games</p>
             <article className="np-game">
-              <span className="np-status">{duskline.status}</span>
-              <h2>{duskline.title}</h2>
-              <p>{duskline.short}</p>
-              <p className="np-meta">{duskline.platformsShort}</p>
+              <h2 style={{ margin: 0 }}>In development</h2>
             </article>
           </div>
         </div>
