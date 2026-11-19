@@ -48,14 +48,12 @@ const HomePage = () => {
       <section id="contact">
         <div className="np-split">
           <div>
-            <p className="np-label">Join the team</p>
             <h2>Want to build games with us?</h2>
             <p className="np-lede">
               We're growing slowly and on purpose. Artists, designers, programmers, and more are welcome to reach out.
             </p>
           </div>
           <div>
-            <p className="np-label">Contact</p>
             <h2>Get in touch</h2>
             <p className="np-lede">Business inquiries, feedback, or just a question. Every message gets read.</p>
             <a className="np-more" href={`mailto:${CONTACT_EMAIL}`}>
