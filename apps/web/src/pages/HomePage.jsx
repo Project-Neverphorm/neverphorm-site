@@ -1,6 +1,6 @@
 import React from "react";
 import SiteLayout from "@/components/SiteLayout.jsx";
-import { tenets, duskline } from "@/data/site.js";
+import { duskline } from "@/data/site.js";
 
 // TODO: set this to the real studio inbox
 const CONTACT_EMAIL = "contact@projectneverphorm.com";
@@ -44,24 +44,6 @@ const HomePage = () => {
           Founded in 2025 by Cody McCullough after more than fifteen years of concepting. The catalog is planned and
           varied, from platformers to narrative games to open worlds, and each one gets made when it's ready.
         </p>
-      </section>
-
-      <section id="culture">
-        <div className="np-split">
-          <div>
-            <p className="np-label">Culture</p>
-            <h2>How we work</h2>
-            <p className="np-lede">A small team building around real lives, with a few principles that guide every project.</p>
-          </div>
-          <div className="np-tenets">
-            {tenets.map((t) => (
-              <div className="np-tenet" key={t.title}>
-                <h3>{t.title}</h3>
-                <p>{t.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       <section id="contact">
